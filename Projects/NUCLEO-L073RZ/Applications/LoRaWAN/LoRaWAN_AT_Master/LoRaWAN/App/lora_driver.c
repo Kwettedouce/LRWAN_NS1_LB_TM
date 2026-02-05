@@ -2066,6 +2066,8 @@ void Lora_fsm(void)
           }
 #ifdef USE_LRWAN_NS1
         case ATCTL_RET_IDLE:
+        	/*Sensor reading on slave device*/
+        	LoraDriverCallbacks->SensorMeasureData(&SendDataBinary);
 #else
         case AT_JOIN_SLEEP_TRANSITION:    /*waiting asynchronous event from modem*/
 #endif
@@ -2151,8 +2153,7 @@ void Lora_fsm(void)
         }
 #endif
 
-        /*Sensor reading on slave device*/
-        LoraDriverCallbacks->SensorMeasureData(&SendDataBinary);
+
 
 #ifdef USE_I_NUCLEO_LRWAN1              /* Led on Modem slave device to indicate a send request*/
         Master_LED_Modem_On(LED_GREEN);

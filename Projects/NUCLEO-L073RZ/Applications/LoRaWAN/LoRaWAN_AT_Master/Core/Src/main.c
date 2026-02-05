@@ -88,6 +88,7 @@ int main(void)
   while (1)
   {
     MX_Master_Process();
+
   }
 }
 

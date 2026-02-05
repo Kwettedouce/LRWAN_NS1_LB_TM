@@ -25,6 +25,7 @@
 #include "sys_sensors.h"
 #include "rtc_if.h"
 #include "stdio.h"
+#include "lrwan_ns1_printf.h"
 
 
 #include ATCMD_MODEM        /* preprocessing definition in sys_conf.h*/
@@ -177,13 +178,13 @@ static void SensorMeasureData(sSendDataBinary_t *SendDataBinary)
 
 #ifdef CAYENNE_LPP
   // 1. TODO LORA USE_LRWAN_NS1: uncomment this variable below vvv too
-  // uint8_t cchannel = 0;
+  //uint8_t cchannel = 0;
 
   // 1. TODO LORA USE_LRWAN_NS1: THEN: print pressure, temperature, humidity on terminal!
   // 1. TODO LORA USE_LRWAN_NS1: with two decimals precision 
   // 1. TODO LORA USE_LRWAN_NS1: #if defined()/#endif style 
   // 1. TODO LORA USE_LRWAN_NS1: hint: use dbg_printf_send() (where is it? how does it work?)
-
+  dbg_printf_send("\nPRESSURE %.2f\n\nTEMPERATURE %.2f\n\nHUMIDITY  %.2f\n", Sensor.pressure, Sensor.temperature, Sensor.humidity);
 
   // 6. TODO LORA: convert temperature, pressure, humidity to data for SendDataBinary->Buffer
   // 6. TODO LORA: hint: decidegrees, decahPas, double humidity percents
